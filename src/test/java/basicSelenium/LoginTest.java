@@ -1,9 +1,6 @@
 package basicSelenium;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -24,7 +21,6 @@ public class LoginTest {
 
     @Test
     public void loginTodoLyTest() throws InterruptedException {
-
         // click login
         driver.findElement(By.xpath("//img[@src='/Images/design/pagelogin.png']")).click();
         // set email
@@ -38,6 +34,7 @@ public class LoginTest {
         // verificacion
         Assertions.assertTrue(driver.findElement(By.xpath("//a[text()='Logout']")).isDisplayed(),"ERROR!! no se pudo iniciar sesion");
 
+      //  driver.switchTo().alert().accept();
     }
 
 }
