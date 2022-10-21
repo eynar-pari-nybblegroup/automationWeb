@@ -2,6 +2,7 @@ package cleanTest;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import singletonSession.Session;
 
 public class LoginTest extends TestBaseTodoLy{
     @Test

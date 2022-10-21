@@ -2,6 +2,11 @@ package singletonSession;
 
 import factoryBrowser.FactoryBrowser;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class Session {
 
@@ -28,5 +33,4 @@ public class Session {
     public WebDriver getBrowser() {
         return browser;
     }
-
 }
