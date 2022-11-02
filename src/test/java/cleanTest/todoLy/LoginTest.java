@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+import utils.GetProperties;
 
 public class LoginTest extends TestBaseTodoLy{
     @Test
@@ -21,8 +22,8 @@ public class LoginTest extends TestBaseTodoLy{
     @Story("Story Login")
     public void verifyLoginSuccessfully(){
         mainPage.loginButton.click();
-        loginModal.emailTextBox.setText("selenium@selenium2022.com");
-        loginModal.passwordTextBox.setText("12345");
+        loginModal.emailTextBox.setText(GetProperties.getInstance().getUser());
+        loginModal.passwordTextBox.setText(GetProperties.getInstance().getPwd());
         loginModal.loginButton.click();
         Assertions.assertTrue(menuSection.logoutButton.isControlDisplayed(),
                 "ERROR login was not successfully");
