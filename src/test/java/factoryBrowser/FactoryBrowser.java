@@ -15,6 +15,9 @@ public class FactoryBrowser {
             case "headless":
                 browser = new Headless();
                 break;
+            case "docker":
+                browser= new BrowserDocker();
+                break;
             default:
                 browser= new FireFox();
                 break;

@@ -20,6 +20,7 @@ public class LoginTest {
     }
 
     @Test
+    @Disabled
     public void loginTodoLyTest() throws InterruptedException {
         // click login
         driver.findElement(By.xpath("//img[@src='/Images/design/pagelogin.png']")).click();
