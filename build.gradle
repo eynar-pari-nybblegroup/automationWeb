@@ -37,7 +37,7 @@ test {
     systemProperty("envFile",envFile.toString())
     useJUnitPlatform()
 }
-
+//gradle clean -x test -PenvFile=qa.properties tags -PtestSuite=SmokeTest
 def testSuite = !project.hasProperty("testSuite")?"Acceptance":project.properties['testSuite']
 def tags = tasks.register("tags",Test) {
     systemProperty("envFile",envFile.toString())
@@ -48,7 +48,7 @@ def tags = tasks.register("tags",Test) {
 }
 
 
-
+// allure serve build\allure-results
 allure {
     version = '2.2.1'
     autoconfigure = true
