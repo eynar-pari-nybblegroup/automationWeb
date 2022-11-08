@@ -28,7 +28,7 @@ public class TestBaseTodoLy {
      public void setup(){
           allureEnvironmentWriter(
                   ImmutableMap.<String, String>builder()
-                          .put("Browser", "Chrome")
+                          .put("Browser", GetProperties.getInstance().getBrowser())
                           .put("URL", GetProperties.getInstance().getHost())
                           .put("User", GetProperties.getInstance().getUser())
                           .put("Pwd", GetProperties.getInstance().getPwd())
