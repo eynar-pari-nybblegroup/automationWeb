@@ -1,10 +1,14 @@
 package cleanTest.todoLy;
 
-import factoryBrowser.Chrome;
-import io.qameta.allure.Allure;
+import com.google.common.collect.ImmutableMap;
 import io.qameta.allure.Attachment;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+
+
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.jupiter.api.extension.ExtensionContext;
+
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import pages.todoLy.LoginModal;
@@ -13,26 +17,30 @@ import pages.todoLy.MenuSection;
 import singletonSession.Session;
 import utils.GetProperties;
 
+import static com.github.automatedowl.tools.AllureEnvironmentWriter.allureEnvironmentWriter;
+
+@ExtendWith(TestResultExtension.class)
 public class TestBaseTodoLy {
      public MainPage mainPage=new MainPage();
      public LoginModal loginModal= new LoginModal();
      public MenuSection menuSection= new MenuSection();
      @BeforeEach
      public void setup(){
+          allureEnvironmentWriter(
+                  ImmutableMap.<String, String>builder()
+                          .put("Browser", "Chrome")
+                          .put("URL", GetProperties.getInstance().getHost())
+                          .put("User", GetProperties.getInstance().getUser())
+                          .put("Pwd", GetProperties.getInstance().getPwd())
+                          .build(), System.getProperty("user.dir")
+                          + "/build/allure-results/");
          Session.getInstance().getBrowser().get(GetProperties.getInstance().getHost());
      }
      @AfterEach
      public void cleanup(){
-         attach();
-         Session.getInstance().closeBrowser();
+          Session.getInstance().closeBrowser();
      }
 
-     @Attachment(value = "screenshot",type = "image/png")
-     private byte[] attach(){
-         //todo EJ1
-        // tomar captura de pantalla - adjuntarlo en el reporte
-        return ((TakesScreenshot) Session.getInstance().getBrowser()).getScreenshotAs(OutputType.BYTES);
-     }
 
 
 }
